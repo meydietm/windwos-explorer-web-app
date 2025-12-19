@@ -1,0 +1,29 @@
+{
+  "name": "@app/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@repo/shared": "workspace:*",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.36.0",
+    "postgres": "^3.4.5",
+    "elysia": "^1.2.21",
+    "@elysiajs/cors": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "bun-types": "^1.1.0",
+    "drizzle-kit": "^0.27.0",
+    "typescript": "^5.5.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "bun src/db/migrate.ts",
+    "db:seed": "bun src/db/seed.ts",
+    "dev": "bun --watch src/index.ts",
+    "test": "bun test"
+  }
+}

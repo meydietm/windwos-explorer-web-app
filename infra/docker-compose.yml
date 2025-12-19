@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: explorer_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-explorer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-explorer}
+      POSTGRES_DB: ${POSTGRES_DB:-explorer}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - explorer_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-explorer} -d ${POSTGRES_DB:-explorer}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  explorer_pgdata:
