@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "lint": "eslint .",
     "dev": "vite",
     "build": "vue-tsc -p tsconfig.app.json --noEmit && vite build",
     "preview": "vite preview",
