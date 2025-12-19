@@ -6,12 +6,10 @@ async function main() {
   const migrationsFolder = resolve(process.cwd(), 'drizzle');
   await migrate(db, { migrationsFolder });
   await sql.end({ timeout: 5 });
-  // eslint-disable-next-line no-console
   console.log('✅ Migrations applied.');
 }
 
 main().catch(async (err) => {
-  // eslint-disable-next-line no-console
   console.error('❌ Migration failed:', err);
   try {
     await sql.end({ timeout: 5 });
